@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 set -e
 
-echo '>>> STARTING POSTGRES...'
-/usr/local/bin/cluster/postgres/entrypoint.sh
+/usr/local/bin/cluster/ssh.sh
+/usr/local/bin/cluster/postgres.sh &
+sleep infinity
