@@ -1,7 +1,9 @@
-FROM postgres:9.6
+FROM postgres:10
 
-RUN apt-get update --fix-missing && \
-    apt-get install -y postgresql-server-dev-$PG_MAJOR postgresql-$PG_MAJOR-repmgr wget openssh-server barman-cli
+ENV REPMMGR_PG_MAJOR=9.6
+RUN rm /etc/apt/trusted.gpg && \
+ apt-get update && \
+    apt-get install -y postgresql-server-dev-$PG_MAJOR postgresql-$REPMMGR_PG_MAJOR-repmgr wget openssh-server barman-cli
 
 # Inherited variables
 # ENV POSTGRES_PASSWORD monkey_pass

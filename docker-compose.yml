@@ -8,7 +8,7 @@ services:
 #        image: paunin/postdock-pgsql
         build:
             context: .
-            dockerfile: Postgres-latest.Dockerfile
+            dockerfile: Postgres-10.beta.Dockerfile
         environment:
             PARTNER_NODES: "pgmaster,pgslave1,pgslave3"
             NODE_ID: 1 # Integer number of node
@@ -43,7 +43,7 @@ services:
 #        image: paunin/postdock-pgsql
         build:
             context: .
-            dockerfile: Postgres-latest.Dockerfile
+            dockerfile: Postgres-10.beta.Dockerfile
         environment:
             PARTNER_NODES: "pgmaster,pgslave1,pgslave3"
             REPLICATION_PRIMARY_HOST: pgmaster
@@ -66,7 +66,7 @@ services:
 #        image: paunin/postdock-pgsql
         build:
             context: .
-            dockerfile: Postgres-latest.Dockerfile
+            dockerfile: Postgres-10.beta.Dockerfile
         environment:
             REPLICATION_PRIMARY_HOST: pgslave1 # I want to have cascade Streeming replication
             NODE_ID: 3
@@ -87,7 +87,7 @@ services:
 #        image: paunin/postdock-pgsql
         build:
             context: .
-            dockerfile: Postgres-latest.Dockerfile
+            dockerfile: Postgres-10.beta.Dockerfile
         environment:
             PARTNER_NODES: "pgmaster,pgslave1,pgslave3"
             REPLICATION_PRIMARY_HOST: pgmaster
@@ -109,7 +109,7 @@ services:
 #        image: paunin/postdock-pgsql
         build:
             context: .
-            dockerfile: Postgres-latest.Dockerfile
+            dockerfile: Postgres-10.beta.Dockerfile
         environment:
             REPLICATION_PRIMARY_HOST: pgslave3
             NODE_ID: 5
