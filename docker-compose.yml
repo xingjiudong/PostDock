@@ -8,7 +8,7 @@ networks:
 
 services:
     pgmaster:
-        image: paunin/postdock-pgsql
+        image: xingjiudong/postgres
         environment:
             PARTNER_NODES: "pgmaster,pgslave1"
             NODE_ID: 1
@@ -33,7 +33,7 @@ services:
         networks:
             - postgres-network
     pgslave1:
-        image: paunin/postdock-pgsql
+        image: xingjiudong/postgres
         environment:
             PARTNER_NODES: "pgmaster,pgslave1"
             REPLICATION_PRIMARY_HOST: pgmaster
@@ -49,7 +49,7 @@ services:
         networks:
             - postgres-network
     pgpool:
-        image: xingjiudong/postdock-pgpool
+        image: xingjiudong/pgpool
         environment:
             constraint:node: =debian_docker09
             PCP_USER: pcp_user
