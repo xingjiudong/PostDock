@@ -73,3 +73,18 @@ services:
     depends_on:
       - "pgmaster"
       - "pgslave"
+
+  pgbackup:
+    image: xingjiudong/pg_dump
+    environment:
+      - PGUSER=${POSTGRES_USER}
+      - PGPASSWORD=${POSTGRES_PASSWORD}
+      - CRON_SCHEDULE=${CRON_SCHEDULE} 
+      - DELETE_OLDER_THAN=5 
+    #  - PGDB=postgres # The name of the database to dump
+      - PGHOST=pgpool
+    networks:
+      - postgres-network
+    depends_on:
+      - "pgpool"
+    command: dump-cron
