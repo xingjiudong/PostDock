@@ -81,7 +81,7 @@ services:
       - PGPASSWORD=${POSTGRES_PASSWORD}
       - CRON_SCHEDULE=${CRON_SCHEDULE} 
       - DELETE_OLDER_THAN=5 
-    #  - PGDB=postgres # The name of the database to dump
+      - PGDB=${POSTGRES_DB}
       - PGHOST=pgpool
     networks:
       - postgres-network
