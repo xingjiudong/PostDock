@@ -75,12 +75,12 @@ services:
       - "pgslave"
 
   pgbackup:
-    image: xingjiudong/pg_dump
+    image: xingjiudong/pg_dump:${PG_DUMP_VERSION}
     environment:
       - PGUSER=${POSTGRES_USER}
       - PGPASSWORD=${POSTGRES_PASSWORD}
       - CRON_SCHEDULE=${CRON_SCHEDULE} 
-      - DELETE_OLDER_THAN=5 
+      - DELETE_OLDER_THAN=${DELETE_OLDER_THAN}
       - PGDB=${POSTGRES_DB}
       - PGHOST=pgpool
     networks:
