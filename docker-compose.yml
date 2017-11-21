@@ -12,6 +12,7 @@ services:
   pgmaster:
     image: xingjiudong/postgres:${POSTGRES_VERSION}
     environment:
+      - constraint:volume.driver==${VOLUME_DRIVER}
       - PARTNER_NODES=pgmaster,pgslave
       - NODE_ID=1
       - NODE_NAME=node1
@@ -37,6 +38,7 @@ services:
     image: xingjiudong/postgres:${POSTGRES_VERSION}
     environment:
       - affinity:container!=pgmaster
+      - constraint:volume.driver==${VOLUME_DRIVER}
       - PARTNER_NODES=pgmaster,pgslave
       - REPLICATION_PRIMARY_HOST=pgmaster
       - NODE_ID=2
@@ -77,6 +79,7 @@ services:
   pgbackup:
     image: xingjiudong/pg_dump:${PG_DUMP_VERSION}
     environment:
+      - constraint:volume.driver==${VOLUME_DRIVER}
       - PGUSER=${POSTGRES_USER}
       - PGPASSWORD=${POSTGRES_PASSWORD}
       - CRON_SCHEDULE=${CRON_SCHEDULE} 
